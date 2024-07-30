@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "web development",
+			"path": "D:/web development"
+		},
+		{
+			"path": "../../../xampp/htdocs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "htdocs"
+	}
+}
