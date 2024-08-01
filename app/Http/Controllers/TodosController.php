@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-//use App\Models\Todo;
-use App\Todo;
+use App\Models\Todo; // Correct namespace
 use Illuminate\Http\Request;
 
 class TodosController extends Controller
 {
     public function index()
     {
-      //  $todos = Todo::all();
-        return view('todos.index')-> with('todos',Todo::all());
+        return view('todos.index')->with('todos', Todo::all());
     }
 
-    // Other methods (create, store, show, edit, update, destroy)...
+    public function show($todoId)
+    {
+        return view('todos.show')->with('todo', Todo::find($todoId));
+    }
 }
