@@ -26,7 +26,12 @@
 
       
         </div>
-        <a href="/todos/{{$todo->id}}/edit" class= "btn btn-info">Edit</a>
+        <a href="/todos/{{$todo->id}}/edit" class= "btn btn-info my-2">Edit</a>
+        
+        <form action="/todos/{{ $todo->id }}/delete" method="POST" class="float-left mr-2">
+                @csrf
+                <button type="submit" class="btn btn-danger  my-2">Delete</button>
+              </form>
       </div>
     </div>
   </div>
