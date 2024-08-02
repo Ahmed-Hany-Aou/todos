@@ -23,7 +23,10 @@
           <div class="card-body">
             {{ $todo->description }}
           </div>
+
+      
         </div>
+        <a href="/todos/{{$todo->id}}/edit" class= "btn btn-info">Edit</a>
       </div>
     </div>
   </div>

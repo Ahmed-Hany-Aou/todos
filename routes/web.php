@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-    return view('welcome');
+    return view('todos.welcome');
 });
 
 // Laravel 8+ recommended way to reference controllers
@@ -10,3 +10,7 @@ Route::get('todos', [TodosController::class, 'index']);
 Route::get('todos/{todo}', [TodosController::class, 'show']);
 Route::get('new-todos', [TodosController::class, 'create']);
 Route::post('store-todos', [TodosController::class, 'store']);
+//route:: get('todos/{todo}/edit','TodosController@edit');//// it has been old cant use it again
+route:: get('todos/{todo}/edit',[TodosController::class,'edit']);
+route ::post('todos/{todo}/update-todos',[TodosController::class, 'update']);
+
