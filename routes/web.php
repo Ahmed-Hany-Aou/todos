@@ -1,10 +1,15 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodosController;
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('todos.welcome');
 });
 
-//Route::get('todos','TodosController@index');
-Route::resource('todos', TodosController::class);
+Route::get('todos', [TodosController::class, 'index']);
+Route::get('todos/{todo}', [TodosController::class, 'show']);
+Route::get('new-todos', [TodosController::class, 'create']);
+Route::post('store-todos', [TodosController::class, 'store']);
+Route::get('todos/{todo}/edit', [TodosController::class, 'edit']);
+Route::post('todos/{todo}/update-todos', [TodosController::class, 'update']);
+Route::post('todos/{todo}/delete', [TodosController::class, 'destroy']);
+Route::get('todos/{todo}/complete', [TodosController::class,'complete']);
