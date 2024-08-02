@@ -24,11 +24,11 @@ class TodosController extends Controller
 
     public function store()
     {
-        $this->validate(request(), [
-            'name' => 'required|min:6|max:12',
-            'description' => 'required'
-          ]);
-    
+      $this->validate(request(), [
+        'name' => 'required|min:6|max:12',
+        'description' => 'required'
+      ]);
+
       $data = request()->all();
 
       $todo = new Todo();
@@ -38,33 +38,41 @@ class TodosController extends Controller
 
       $todo->save();
 
+      session()->flash('success', 'Todo created successfully.');
+
       return redirect('/todos');
-    
     }
-    public function edit($todoId)
+
+    public function edit(Todo $todo)
     {
-      $todo=Todo:: find($todoId);
       return view('todos.edit')->with('todo', $todo);
     }
+
     public function update(Todo $todo)
     {
       $this->validate(request(), [
         'name' => 'required|min:6|max:12',
         'description' => 'required'
       ]);
+
       $data = request()->all();
-      
+
       $todo->name = $data['name'];
       $todo->description = $data['description'];
+
       $todo->save();
+
+      session()->flash('success', 'Todo updated successfully.');
+
       return redirect('/todos');
-}
-public function destroy(Todo $todo)
-{
+    }
 
-$todo->delete();
- // Todo::destroy($todoId);
- return redirect('/todos');
-}
+    public function destroy(Todo $todo)
+    {
+      $todo->delete();
 
+      session()->flash('success', 'Todo deleted successfully.');
+
+      return redirect('/todos');
+    }
 }
